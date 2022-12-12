@@ -1,2 +1,2 @@
 # Problem-Solving
-Contain solutions for the problems that I found interesting
+Here are some solutions for the problems that I found interesting

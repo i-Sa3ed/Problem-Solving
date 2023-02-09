@@ -1,2 +1,2 @@
 # Problem-Solving
-Here are some solutions for the problems that I found interesting
+Here are some codes that help me in Problem Solving

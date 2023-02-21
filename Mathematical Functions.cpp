@@ -13,6 +13,7 @@ bool isPrime(int x) {
 
 ///////////////////////////////////////////////////////////
 
+
 unsigned long long gcd(long long x, long long y)
 {
     if (x < y)

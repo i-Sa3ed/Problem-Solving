@@ -1,90 +1,60 @@
-struct Point {
-    double x, y;
-    Point(double x = 0, double y = 0) : x(x), y(y) {
-    }
-
-    void read() { cin >> x >> y; }
-
-    Point operator -(Point p) {
-        Point res;
-        res.x = x - p.x;
-        res.y = y - p.y;
-
-        return res;
-    }
-};
-
-struct Rectangle_ul_lr {
-    Point ul, lr; // upper left, lower right
+struct Rectangle {
+    double left, right, lower, upper;
     double w, h; // width, length
-    Rectangle_ul_lr() { w = h = 0; }
+    Rectangle() { left = right = lower = upper = w = h = 0; }
 
-    void read()
-    { cin >> ul.x >> ul.y >> lr.x >> lr.y; }
+    void set(double l, double r, double low, double up) {
+        left = l, right = r, low = lower, upper = up;
+    }
+
     void compute() {
-        w = lr.x - ul.x;
-        h = ul.y - lr.y;
+        w = right - left;
+        h = upper - lower;
     }
     double area() {
         compute();
+        if (w < 0 or h < 0)
+            return -1; // invalid rectangle
         return (w * h);
     }
 
     bool is_inside(Point p, bool consider_border = false) {
         bool res;
         if (!consider_border) {
-            res = (p.x > ul.x and p.x < lr.x)
-                  and (p.y > lr.y and p.y < ul.y);
+            res = (p.x > left and p.x < right)
+                  and (p.y > lower and p.y < upper);
         }
         else {
-            res = (p.x >= ul.x and p.x <= lr.x)
-                  and (p.y >= lr.y and p.y <= ul.y);
+            res = (p.x >= left and p.x <= right)
+                  and (p.y >= lower and p.y <= upper);
         }
 
         return res;
     }
 };
 
-struct Rectangle_bl_tr {
-    Point bl, tr;
-    ll w, h; // width, length
-    Rectangle_bl_tr() { w = h = 0; }
+Rectangle overlapping_rectangle(Rectangle rec1, Rectangle rec2) {
+    Rectangle overlap;
 
-    void read()
-    { cin >> bl.x >> bl.y >> tr.x >> tr.y; }
-    void compute() {
-        w = tr.x - bl.x;
-        h = tr.y - bl.y;
-    };
-    ll area() {
-        compute();
-        return (w * h);
-    };
-};
+    overlap.left = max(rec1.left, rec2.left);
+    overlap.lower = max(rec1.lower, rec2.lower);
 
-ll inter_area(Rectangle_bl_tr r1, Rectangle_bl_tr r2)
-{
-    ll iw, il; // intersection width and length
-    iw = max(0, min(r1.tr.x, r2.tr.x) - max(r1.bl.x, r2.bl.x));
-    il = max(0, min(r1.tr.y, r2.tr.y) - max(r1.bl.y, r2.bl.y));
+    overlap.right = min(rec1.right, rec2.right);
+    overlap.upper = min(rec1.upper, rec2.upper);
 
-    return (iw * il);
+    return overlap; // if (overlap.area <= 0) => no overlap
 }
 
-ll inter_area(vector<Rectangle_bl_tr>& rectangles)
+Rectangle overlapping_rectangle(vector<Rectangle>& rectangles)
 {
-    Point max_bl, min_tr;
-    min_tr.x = min_tr.y = INT_MAX;
-    for(Rectangle_bl_tr& rect : rectangles) {
-        max_bl.x = max(max_bl.x, rect.bl.x);
-        max_bl.y = max(max_bl.y, rect.bl.y);
-        min_tr.x = min(min_tr.x, rect.tr.x);
-        min_tr.y = min(min_tr.y, rect.tr.y);
+    Rectangle overlap;
+    overlap.right = overlap.upper = INT_MAX;
+    for(Rectangle& rect : rectangles) {
+        overlap.left = max(overlap.left, rect.left);
+        overlap.lower = max(overlap.lower, rect.lower);
+        overlap.right = min(overlap.right, rect.right);
+        overlap.upper = min(overlap.upper, rect.upper);
     }
 
-    ll iw, il; // intersection width and length
-    iw = max(0LL, min_tr.x - max_bl.x);
-    il = max(0LL, min_tr.y - max_bl.y);
-
-    return (iw * il);
+    return overlap; // if (overlap.area <= 0) => no overlap
 }

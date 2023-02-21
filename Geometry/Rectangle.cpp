@@ -1,7 +1,3 @@
-struct Point {
-    int x, y;
-    Point() { x = y = 0; }
-};
 struct Rectangle {
     Point bl, tr;
     ll w, h; // width, length

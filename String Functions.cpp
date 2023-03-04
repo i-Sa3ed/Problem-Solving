@@ -1,3 +1,5 @@
+////////////////////////////// Palindrome Stuff /////////////////////////////
+
 string build_palindrome_min_lexi(vector<int>& frq) {
     string half;
     char odd = '*';
@@ -15,8 +17,6 @@ string build_palindrome_min_lexi(vector<int>& frq) {
     return res;
 }
 
-///////////////////////////////////////////////////////////
-
 bool can_be_palindrome(string s) {
     int alp[26] = {};
     for (char c : s)
@@ -29,3 +29,20 @@ bool can_be_palindrome(string s) {
 
     return oddFrq <= 1;
 }
+
+////////////////////////////// Capitalization /////////////////////////////
+
+string string_tolower(string x) {
+    string res;
+    for (char c : x)
+        res += tolower(c);
+    return res;
+}
+
+string string_toupper(string x) {
+    string res;
+    for (char c : x)
+        res += toupper(c);
+    return res;
+}
+

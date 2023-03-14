@@ -12,8 +12,6 @@ using namespace std;
 
 int MOD = 1e9 + 7;
 using ll = long long;
-#define vi2d(x)  vector< vector<int> > x;
-#define v2d_resize(x, n, m) x = vector< vector<int> >(n, vector<int>(m));
 string letters = "abcdefghijklmnopqrstuvwxyz";
 #define Saeed_fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
 #define endl '\n'  // because '\n' is faster while compiling, and 'endl' is easier for coding ;)

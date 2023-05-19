@@ -1,3 +1,5 @@
+////////////////// Prime Stuff ///////////////////
+
 bool isPrime(int x) {
     if(x == 0 or x == 1)
         return false;
@@ -9,6 +11,22 @@ bool isPrime(int x) {
             return false;
     }
     return true;
+}
+
+vector<int> primeFactors(int n) {
+    vector<int> factors;
+    while (n % 2 == 0) { // add all 2s
+        factors.push_back(2);
+        n /= 2;
+    }
+    for (int i = 3; i * i <= n; i += 2) { // check for odd factors
+        while (n % i == 0) {
+            factors.push_back(i);
+            n /= i;
+        }
+    }
+    if (n > 2) factors.push_back(n); // handle prime numbers
+    return factors;
 }
 
 ///////////////////////////////////////////////////////////

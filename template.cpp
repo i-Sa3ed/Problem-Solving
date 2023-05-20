@@ -3,14 +3,16 @@ using namespace std;
 
 // debug:
 #ifndef ONLINE_JUDGE
-#include "D:/Problem Solving/Some related files/debug/debug.hpp"
+#include "D:\Problem Solving\Imp files - PDFs - Books\debug\debug.hpp"
 #else
 #define debug(...)
 #define debug_itr(...)
 #define debug_bits(...)
 #endif
 
-using ll = long long;
+typedef long long ll;
+typedef vector< vector<int> > GRAPH;
+
 #define Saeed_fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
 #define endl '\n'  // because '\n' is faster while compiling, and 'endl' is easier for coding ;)
 #define all(c) (c).begin(), (c).end()

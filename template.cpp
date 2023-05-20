@@ -10,6 +10,9 @@ using namespace std;
 #define debug_bits(...)
 #endif
 
+const double PI = acos(-1.0);
+const double EPS = 1e-8; /// WARNING: problem dependent !!!
+
 typedef long long ll;
 typedef vector< vector<int> > GRAPH;
 
@@ -19,8 +22,10 @@ typedef vector< vector<int> > GRAPH;
 #define all1(a, n) ((a).begin() + 1), ((a).begin() + (n) + 1)
 #define for1(iter, n) for (int (iter) = 1; (iter) <= (n); ++(iter))
 
-void yes_or_no(bool ok) { cout << (ok? "YES\n" : "NO\n"); }
-ll sum_to_n(ll n) { return n*(n + 1)/2; }
+inline void yes_or_no(bool ok) { cout << (ok? "YES\n" : "NO\n"); }
+inline ll sum_to_n(ll n) { return n*(n + 1)/2; }
+// returns: 0 if almost equal, 1 if `a` greater, -1 if `b` greater
+inline int dcmp (double a, double b) { return fabs(a - b) <= EPS? 0 : a > b? 1 : -1; }
 
 /////
 

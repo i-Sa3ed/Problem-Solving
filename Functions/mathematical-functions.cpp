@@ -13,21 +13,37 @@ bool isPrime(int x) {
     return true;
 }
 
-vector<int> primeFactors(int n) {
-    vector<int> factors;
-    while (n % 2 == 0) { // add all 2s
-        factors.push_back(2);
-        n /= 2;
-    }
-    for (int i = 3; i * i <= n; i += 2) { // check for odd factors
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
+////////////////// Factorization ///////////////////
+class Factorization {
+public:
+    vector<int> prime_factors(int n) {
+        vector<int> factors;
+        while (n % 2 == 0) { // add all 2s
+            factors.push_back(2);
+            n /= 2;
         }
+        for (int i = 3; i * i <= n; i += 2) { // check for odd factors
+            while (n % i == 0) {
+                factors.push_back(i);
+                n /= i;
+            }
+        }
+        if (n > 2) factors.push_back(n); // handle prime numbers
+        return factors;
     }
-    if (n > 2) factors.push_back(n); // handle prime numbers
-    return factors;
-}
+    vector<int> unique_factors(int n) {
+        // returns the unique factors for `n`
+        // O(sqrt(n))
+
+        vector<int> factors;
+        for (int i = 1; 1LL*i*i <= n; ++i)
+            if (n % i == 0) {
+                factors.push_back(i);
+                factors.push_back(n/i);
+            }
+        return factors;
+    }
+};
 
 ///////////////////////////////////////////////////////////
 

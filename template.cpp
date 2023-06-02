@@ -24,8 +24,13 @@ typedef vector< vector<int> > GRAPH;
 
 inline void yes_or_no(bool ok) { cout << (ok? "YES\n" : "NO\n"); }
 inline ll sum_to_n(ll n) { return n*(n + 1)/2; }
+// double compare
 // returns: 0 if almost equal, 1 if `a` greater, -1 if `b` greater
 inline int dcmp (double a, double b) { return fabs(a - b) <= EPS? 0 : a > b? 1 : -1; }
+
+int n;
+vector<int> a;
+string s;
 
 /////
 

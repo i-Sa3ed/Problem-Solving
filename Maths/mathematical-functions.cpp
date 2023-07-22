@@ -1,18 +1,3 @@
-////////////////// Prime Stuff ///////////////////
-
-bool isPrime(int x) {
-    if(x == 0 or x == 1)
-        return false;
-    if(x == 2)
-        return true;
-
-    for (ll i = 2; i*i <= x; ++i) {
-        if(x % i == 0)
-            return false;
-    }
-    return true;
-}
-
 ////////////////// Factorization ///////////////////
 class Factorization {
 public:

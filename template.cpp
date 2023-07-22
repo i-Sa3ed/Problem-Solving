@@ -28,10 +28,6 @@ inline ll sum_to_n(ll n) { return n*(n + 1)/2; }
 // returns: 0 if almost equal, 1 if `a` greater, -1 if `b` greater
 inline int dcmp (double a, double b) { return fabs(a - b) <= EPS? 0 : a > b? 1 : -1; }
 
-int n;
-vector<int> a;
-string s;
-
 /////
 
 void solve(int TC) {
@@ -42,7 +38,8 @@ int main()
 {
     Saeed_fast;
 
-    int TC = 1; cin >> TC;
+    int TC = 1;
+    cin >> TC;
     for (int test = 1; test <= TC; ++test) {
         solve(test);
     }

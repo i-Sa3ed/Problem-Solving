@@ -12,6 +12,7 @@ using namespace std;
 
 const double PI = acos(-1.0);
 const double EPS = 1e-8; /// WARNING: problem dependent !!!
+const int OO = 1e6;
 
 typedef long long ll;
 typedef vector< vector<int> > GRAPH;

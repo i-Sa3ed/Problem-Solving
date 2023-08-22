@@ -1,9 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 
 // debug:
 #ifndef ONLINE_JUDGE
-#include "D:\Problem Solving\Imp files - PDFs - Books\debug\debug.hpp"
+#include "D:\Problem Solving\files, PDFs, Books\debug\debug.hpp"
 #else
 #define debug(...)
 #define debug_itr(...)
@@ -16,12 +18,15 @@ const int OO = 1e6;
 
 typedef long long ll;
 typedef vector< vector<int> > GRAPH;
+typedef tree<int, null_type, less<int>, rb_tree_tag,
+            tree_order_statistics_node_update> indexed_set; // find_by_order, order_of_key
 
 #define Saeed_fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
 #define endl '\n'  // because '\n' is faster while compiling, and 'endl' is easier for coding ;)
 #define all(c) (c).begin(), (c).end()
 #define all1(a, n) ((a).begin() + 1), ((a).begin() + (n) + 1)
-#define for1(iter, n) for (int (iter) = 1; (iter) <= (n); ++(iter))
+#define rep(i, v) for(int (i) = 0; (i) < (v).size(); ++(i))
+#define rep1(i, v) for (int (i) = 1; (i) <= (v).size(); ++(i))
 
 inline void yes_or_no(bool ok) { cout << (ok? "YES\n" : "NO\n"); }
 inline ll sum_to_n(ll n) { return n*(n + 1)/2; }

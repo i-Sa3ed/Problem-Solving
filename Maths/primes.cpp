@@ -23,10 +23,12 @@ vector<int> primesInRange(int n) { // backward thinking
     vector<bool> is_prime(n+1, true); // set all to primes
     is_prime[0] = is_prime[1] = false;
 
-    for (ll i = 2; i * i <= n; ++i)
+    for (ll i = 2; i * i <= n; ++i) {
         if (is_prime[i])
-            for (int j = 2*i; j <= n; j += i) // loop and mark all multiples of i
-                is_prime[j] = false;
+            continue;
+        for (int j = 2*i; j <= n; j += i) // loop and mark all multiples of i
+            is_prime[j] = false;
+    }
 
     return is_prime;
 }

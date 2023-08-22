@@ -26,6 +26,7 @@ string build_palindrome_min_lexi(vector<int>& frq) {
     return res;
 }
 
+// check if we can make the string palindrome by reordering it
 bool can_be_palindrome(string s) {
     int alp[26] = {};
     for (char c : s)

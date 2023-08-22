@@ -7,7 +7,7 @@ public:
             factors.push_back(2);
             n /= 2;
         }
-        for (int i = 3; i * i <= n; i += 2) { // check for odd factors
+        for (int i = 3; 1LL * i * i <= n; i += 2) { // check for odd factors
             while (n % i == 0) {
                 factors.push_back(i);
                 n /= i;
@@ -21,10 +21,11 @@ public:
         // O(sqrt(n))
 
         vector<int> factors;
-        for (int i = 1; 1LL*i*i <= n; ++i)
+        for (int i = 1; 1LL * i * i <= n; ++i)
             if (n % i == 0) {
                 factors.push_back(i);
-                factors.push_back(n/i);
+                if (n/i != i)
+                    factors.push_back(n/i);
             }
         return factors;
     }

@@ -33,7 +33,7 @@ struct Rectangle {
     }
 };
 
-Rectangle overlapping_rectangle(Rectangle rec1, Rectangle rec2) {
+Rectangle get_overlapping_rectangle(Rectangle rec1, Rectangle rec2) {
     Rectangle overlap;
 
     overlap.left = max(rec1.left, rec2.left);
@@ -45,7 +45,7 @@ Rectangle overlapping_rectangle(Rectangle rec1, Rectangle rec2) {
     return overlap; // if (overlap.area <= 0) => no overlap
 }
 
-Rectangle overlapping_rectangle(vector<Rectangle>& rectangles)
+Rectangle get_overlapping_rectangle(vector<Rectangle>& rectangles)
 {
     Rectangle overlap;
     overlap.right = overlap.upper = INT_MAX;

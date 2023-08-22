@@ -23,8 +23,8 @@ else cout << "NO\n";
 // using a trivial for loop
 int msb;
 for (int i = 0; i < 32; ++i) {
-if (x >> i & 1)
-msb = i;
+    if (x >> i & 1)
+        msb = i;
 }
 cout << "MSB = " << msb << endl;
 

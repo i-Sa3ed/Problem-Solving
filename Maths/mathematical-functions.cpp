@@ -56,19 +56,15 @@ unsigned long long lcm (long long x, long long y)
 
 ///////////////////////////////////////////////////////////
 
-unsigned long long nCr (int n, int r)
-{
+ll nCr(int n, int r) {
     if (r > n)
         return 0;
-    r = max(r, n - r);
-    unsigned long long ans = 1, div = 1, i = r + 1;
 
-    while (i <= n)
-    {
-        ans *= i;
-        i++;
-        ans /= div;
-        div++;
+    r = max(r, n - r); // optimization
+    ll ans = 1, div = 1, i = r + 1;
+    while (i <= n) {
+        ans *= i; ++i;
+        ans /= div; ++div;
     }
 
     return ans;

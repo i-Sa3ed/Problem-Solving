@@ -19,14 +19,16 @@ bool isPrime(ll x) {
 }
 
 // count #primes in range using Sieve algo
-vector<int> primesInRange(int n) { // backward thinking
-    vector<bool> is_prime(n+1, true); // set all to primes
+vector<bool> sieve(int n) {
+    vector<bool> is_prime(n + 1, true);
     is_prime[0] = is_prime[1] = false;
 
-    for (ll i = 2; i * i <= n; ++i) {
-        if (is_prime[i])
+    for (int i = 2; 1LL * i * i <= n; ++i) {
+        if (!is_prime[i])
             continue;
-        for (int j = 2*i; j <= n; j += i) // loop and mark all multiples of i
+
+        // mark all multiples of i as non-primes
+        for (int j = 2 * i; j <= n; j += i)
             is_prime[j] = false;
     }
 

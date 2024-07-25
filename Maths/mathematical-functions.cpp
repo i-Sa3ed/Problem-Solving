@@ -1,3 +1,114 @@
+////////////////// Find the roots of equations ///////////////////
+/////// Quadratic ///////
+// using the general rule:
+// Prints roots of quadratic equation
+// ax*2 + bx + x
+void findRoots(int a, int b, int c)
+{
+    // If a is 0, then equation is
+    // not quadratic, but linear
+    if (a == 0) {
+        cout << "Invalid";
+        return;
+    }
+
+    int d = b * b - 4 * a * c;
+    double sqrt_val = sqrt(abs(d));
+
+    if (d > 0) {
+        cout << "Roots are real and different ";
+        cout << (double)(-b + sqrt_val) / (2 * a) << " "
+             << (double)(-b - sqrt_val) / (2 * a);
+    }
+    else if (d == 0) {
+        cout << "Roots are real and same ";
+        cout << -(double)b / (2 * a);
+    }
+
+    // d < 0
+    else {
+        cout << "Roots are complex ";
+        cout << -(double)b / (2 * a) << " + i"
+             << sqrt_val / (2 * a) << " "
+             << -(double)b / (2 * a) << " - i"
+             << sqrt_val / (2 * a);
+    }
+}
+
+/////////// Cubic ///////////
+// using the divisors of d
+bool check(ll x){
+	return a * x * x * x + b * x * x + c * x + d == 0;
+}
+ 
+int main()
+{
+    GO
+    int t;
+	cin >> t;
+	while(t--){
+		cin >> a >> b >> c >> d;
+		ll ans = -1e9;
+		if(check(0)) ans = 0;
+		for(ll i = 1; i * i <= abs(d); i++){
+			if(d % i == 0){
+				if(check(i)) ans = i;
+				if(check(-i)) ans = -i;
+				if(check(d / i)) ans = d / i;
+				if(check(-d / i)) ans = -d / i;
+			}
+		}
+		if(ans != -1e9){
+			cout << "Yes\n";
+			cout << ans << '\n';
+		}
+		else cout << "No\n";
+	}
+    return 0;
+}
+
+// using Binary search:
+// Function to find the integral
+// solution of the given equation
+void findSolution(int A, int B, int C,
+                  int D, int E)
+{
+
+    // Initialise start and end
+    int start = 0, end = 100000;
+
+    long long int mid, ans;
+
+    // Implement Binary Search
+    while (start <= end) {
+
+        // Find mid
+        mid = start + (end - start) / 2;
+
+        // Find the value of f(x) using
+        // current mid
+        ans = check(A, B, C, D, mid);
+
+        // Check if current mid satisfy
+        // the equation
+        if (ans == E) {
+
+            // Print mid and return
+            cout << mid << endl;
+            return;
+        }
+
+        if (ans < E)
+            start = mid + 1;
+        else
+            end = mid - 1;
+    }
+
+    // Print "NA" if not found
+    // any integral solution
+    cout << "NA";
+}
+
 ////////////////// Factorization ///////////////////
 class Factorization {
 public:
